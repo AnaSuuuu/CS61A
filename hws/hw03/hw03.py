@@ -21,6 +21,8 @@ def composer(func=lambda x: x):
     """
     def func_adder(g):
         "*** YOUR CODE HERE ***"
+        t = lambda x: func(g(x))
+        return composer(t)
     return func, func_adder
 
 
@@ -42,7 +44,11 @@ def g(n):
     >>> check(HW_SOURCE_FILE, 'g', ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    "*** YOUR CODE HERE ***"     
+
+    if n <= 3:
+        return n
+    return g(n - 1) + 2 * g(n - 2) + 3 * g(n - 3)
 
 def g_iter(n):
     """Return the value of G(n), computed iteratively.
@@ -64,6 +70,10 @@ def g_iter(n):
     """
     "*** YOUR CODE HERE ***"
 
+    li = [0, 1, 2, 3]
+    for i in range (4, n + 1):
+        li[i % 4] = li[(i - 1) % 4] + 2 * li[(i - 2) % 4] + 3 * li[(i - 3) % 4]
+    return li[n % 4]
 
 def missing_digits(n):
     """Given a number a that is in sorted, increasing order,
