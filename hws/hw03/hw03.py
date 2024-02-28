@@ -103,6 +103,9 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n < 10:
+        return 0
+    return max(n % 10 - n // 10 % 10 - 1, 0) + missing_digits(n // 10)
 
 
 def count_change(total):
@@ -122,6 +125,15 @@ def count_change(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def cal(n, x):
+        if n == 0:
+            return 1
+        if n < 0:
+            return 0
+        if n < x:
+            return 0
+        return cal(n - x, x) + cal(n, 2 * x)
+    return cal(total, 1)
 
 
 def print_move(origin, destination):
