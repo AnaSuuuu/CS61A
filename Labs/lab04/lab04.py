@@ -11,7 +11,7 @@ def reverse_iter(lst):
     >>> print("Do not use lst[::-1], lst.reverse(), or reversed(lst)!") if any([r in cleaned for r in ["[::", ".reverse", "reversed"]]) else None
     """
     "*** YOUR CODE HERE ***"
-
+    return [lst[-1 * x] for x in range(1, len(lst) + 1)]
 
 def reverse_recursive(lst):
     """Returns the reverse of the given list.
@@ -23,7 +23,10 @@ def reverse_recursive(lst):
     >>> print("Do not use lst[::-1], lst.reverse(), or reversed(lst)!") if any([r in cleaned for r in ["[::", ".reverse", "reversed"]]) else None
     """
     "*** YOUR CODE HERE ***"
-
+    if len(lst) == 1:
+        return [lst[0]]
+    else:
+        return reverse_iter(lst[1::]) + [lst[0]]
 
 from math import sqrt
 def distance(city_a, city_b):
@@ -38,6 +41,13 @@ def distance(city_a, city_b):
     5.0
     """
     "*** YOUR CODE HERE ***"
+    """
+    a1, b1, c1 = city_a
+    a2, b2, c2 = city_b
+
+    return sqrt((b1 - b2)**2 + (c1 - c2)**2)
+    """
+    return sqrt((city_a[1] - city_b[1])**2 + (city_a[2] - city_b[2])**2)
 
 def closer_city(lat, lon, city_a, city_b):
     """
@@ -54,6 +64,8 @@ def closer_city(lat, lon, city_a, city_b):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
+    gathon = ('Gathon', lat, lon)
+    return get_name(city_a) if distance(gathon, city_a) < distance(gathon, city_b) else get_name(city_b)
 
 def check_abstraction():
     """
