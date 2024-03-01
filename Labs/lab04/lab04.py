@@ -47,7 +47,9 @@ def distance(city_a, city_b):
 
     return sqrt((b1 - b2)**2 + (c1 - c2)**2)
     """
-    return sqrt((city_a[1] - city_b[1])**2 + (city_a[2] - city_b[2])**2)
+    dx = get_lat(city_a) - get_lat(city_b)
+    dy = get_lon(city_a) - get_lon(city_b)
+    return sqrt(dx**2 + dy**2)
 
 def closer_city(lat, lon, city_a, city_b):
     """
@@ -174,4 +176,16 @@ def add_chars(w1, w2):
     True
     """
     "*** YOUR CODE HERE ***"
+    """
+    if len(w1) == 0:
+        return 
+    if w1[0] != w2[0]:
+        print(str(w2[0]))
+        return add_chars(w1, w2[1:])
+    else:
+        return add_chars(w1[1:], w2[1:])
+    """
+    if len(w1) == 0:
+        return w2
+    return add_chars(w1[1:], w2[1:]) if w1[0] == w2[0] else w2[0] + add_chars(w1, w2[1:])
 
