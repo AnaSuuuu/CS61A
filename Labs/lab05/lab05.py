@@ -6,7 +6,7 @@ def coords(fn, seq, lower, upper):
     [[-2, 4], [1, 1], [3, 9]]
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    return [[i, fn(i)] for i in seq if fn(i) >= lower and fn(i) <= upper]
 
 
 def riffle(deck):
@@ -19,7 +19,8 @@ def riffle(deck):
     [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]
     """
     "*** YOUR CODE HERE ***"
-    return _______
+    "return deck[0]"
+    return [deck[i // 2 + i % 2 * len(deck) // 2] for i in range(len(deck))]
 
 
 def berry_finder(t):
@@ -40,7 +41,10 @@ def berry_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    "return tree('branch1', [tree('leaf'), tree('berry')])"
+    if len(t) == 1:
+        return t[0] == 'berry'
+    return berry_finder(t[0]) or berry_finder(t[1:])
 
 def sprout_leaves(t, leaves):
     """Sprout new leaves containing the data in leaves at each leaf in
