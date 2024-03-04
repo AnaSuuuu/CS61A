@@ -42,9 +42,13 @@ def berry_finder(t):
     """
     "*** YOUR CODE HERE ***"
     "return tree('branch1', [tree('leaf'), tree('berry')])"
-    if len(t) == 1:
-        return t[0] == 'berry'
-    return berry_finder(t[0]) or berry_finder(t[1:])
+    
+    if label(t) == 'berry':
+        return True
+    for s in branches(t):
+        if berry_finder(s):
+            return True
+    return False
 
 def sprout_leaves(t, leaves):
     """Sprout new leaves containing the data in leaves at each leaf in
@@ -80,6 +84,9 @@ def sprout_leaves(t, leaves):
           2
     """
     "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return tree(label(t), [tree(s) for s in leaves])
+    return tree(label(t), [sprout_leaves(branch, leaves) for branch in branches(t)])
 
 # Abstraction tests for sprout_leaves and berry_finder
 def check_abstraction():
@@ -166,7 +173,17 @@ def add_trees(t1, t2):
       5
     """
     "*** YOUR CODE HERE ***"
-
+    
+    if is_leaf(t1):
+        if is_leaf(t2):
+            return tree(label(t1) + label(t2))
+        else:
+            return tree(label(t1) + label(t2), [add_trees(tree(0), branch) for branch in branches(t2)])
+    else:
+        if is_leaf(t2):
+            return tree(label(t1) + label(t2), [add_trees(branch, tree(0)) for branch in branches(t1)])
+        else:
+            return tree(label(t1) + label(t2), [add_trees(t1[i] if i < len(t1) else tree(0), t2[i] if i < len(t2) else tree(0)) for i in range(1, max(len(t1), len(t2)))])
 
 def build_successors_table(tokens):
     """Return a dictionary: keys are words; values are lists of successors.
