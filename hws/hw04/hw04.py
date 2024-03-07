@@ -105,8 +105,20 @@ def balanced(m):
     True
     """
     if is_planet(m):
+       return True
+    a, b = (length(left(m)) * total_weight(end(left(m)))), (total_weight(end(right(m))) * length(right(m)))
+    if a == b and balanced(end(left(m))) and balanced(end(right(m))):
         return True
-    
+    else:
+        return False
+    # print
+    # print
+    # print(length(left(m)))
+    # print(size(end(left(m))))
+    # print(length(right(m)))
+    # print(size(end(right(m))))
+    # 
+    # return (length(left(m)) * size(end(left(m)))) == (size(end(right(m))) * length(right(m)))   
 
 def totals_tree(m):
     """Return a tree representing the mobile with its total weight at the root.
@@ -138,7 +150,13 @@ def totals_tree(m):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    if is_planet(m):
+        return tree(total_weight(m))
+    l, r = end(left(m)), end(right(m))
+    # return totals_tree(l)
+    # return [total_weight(m)]
+    # return [totals_tree(l) + totals_tree(r)]
+    return tree(total_weight(m), tree(totals_tree(l)) + tree(totals_tree(r)))
 
 def replace_leaf(t, find_value, replace_value):
     """Returns a new tree where every leaf value equal to find_value has
@@ -169,8 +187,16 @@ def replace_leaf(t, find_value, replace_value):
     >>> laerad == yggdrasil # Make sure original tree is unmodified
     True
     """
-    "*** YOUR CODE HERE ***"
-
+    # return branches(t)
+    # return tree(label(t))
+    # if is_leaf(t):
+    #     return tree(replace_value) if (label(t) == find_value) else tree(label(t))
+    
+    
+    # if (label(t) == find_value):
+    # return tree(replace_value, replace_leaf(branches(t), find_value, replace_value))
+    # else:
+    #    return tree(label(t), replace_leaf(branches(t), find_value, replace_value))
 
 def preorder(t):
     """Return a list of the entries in this tree in the order that they
