@@ -192,7 +192,7 @@ def replace_leaf(t, find_value, replace_value):
     if is_leaf(t):
         return tree(replace_value) if (label(t) == find_value) else tree(label(t))
     else:
-        return tree(label(t), tree(replace_leaf(branch, find_value, replace_value) for branch in branches(t)))
+        return tree(label(t), [replace_leaf(branch, find_value, replace_value) for branch in branches(t)])
 
 def preorder(t):
     """Return a list of the entries in this tree in the order that they
@@ -203,9 +203,14 @@ def preorder(t):
     [1, 2, 3, 4, 5, 6, 7]
     >>> preorder(tree(2, [tree(4, [tree(6)])]))
     [2, 4, 6]
+    >>> numbers2 = tree(1, [tree(2, [tree(3, [tree(4), tree(5)])]), tree(6, [tree(7)])])
+    >>> preorder(numbers)
+    [1, 2, 3, 4, 5, 6, 7]
     """
-    "*** YOUR CODE HERE ***"
-
+    if is_leaf(t):
+        return [label(t)]
+    return [label(t)] + sum([preorder(b) for b in branches(t)], [])
+    # get a sum of a list, of which the element is list!!!
 
 def has_path(t, phrase):
     """Return whether there is a path in a tree where the entries along the path
