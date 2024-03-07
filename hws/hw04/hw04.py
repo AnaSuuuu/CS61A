@@ -189,14 +189,10 @@ def replace_leaf(t, find_value, replace_value):
     """
     # return branches(t)
     # return tree(label(t))
-    # if is_leaf(t):
-    #     return tree(replace_value) if (label(t) == find_value) else tree(label(t))
-    
-    
-    # if (label(t) == find_value):
-    # return tree(replace_value, replace_leaf(branches(t), find_value, replace_value))
-    # else:
-    #    return tree(label(t), replace_leaf(branches(t), find_value, replace_value))
+    if is_leaf(t):
+        return tree(replace_value) if (label(t) == find_value) else tree(label(t))
+    else:
+        return tree(label(t), tree(replace_leaf(branch, find_value, replace_value) for branch in branches(t)))
 
 def preorder(t):
     """Return a list of the entries in this tree in the order that they
