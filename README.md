@@ -1,5 +1,6 @@
 # CS61A
-UCB Berkerly CS61A
+
+UCB CS61A: Structure and Interpretation of Computer Programs
 
 Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 
