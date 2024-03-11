@@ -24,6 +24,7 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] HW 01: Variables & Functions, Control
 - [x] HW 02: Higher-Order Functions
 - [x] HW 03: Higher-Order Functions, Self Reference, Recursion, Tree Recursion
+- [x] HW 04: Data Abstraction, Trees
 
 ### Project
 - [x] Hog
