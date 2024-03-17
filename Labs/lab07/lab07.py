@@ -81,9 +81,9 @@ def trade(first, second):
     """
     m, n = 1, 1
 
-    equal_prefix = lambda: ______________________
-    while _______________________________:
-        if __________________:
+    equal_prefix = lambda: sum(first[:m]) == sum(second[:n])
+    while m < len(first) and n < len(second) and (equal_prefix() == False):
+        if sum(first[:m]) < sum(second[:n]):
             m += 1
         else:
             n += 1
@@ -108,7 +108,12 @@ def reverse(lst):
     [-8, 72, 42]
     """
     "*** YOUR CODE HERE ***"
-
+    num = len(lst)
+    i = 0
+    while i < num:
+        x = lst.pop()
+        lst.insert(i, x)
+        i += 1
 
 cs61a = {
     "Homework": 2,
@@ -135,7 +140,13 @@ def make_glookup(class_assignments):
     0.8913043478260869
     """
     "*** YOUR CODE HERE ***"
-
+    usr, tot = 0, 0
+    def cal(kind, num):
+        nonlocal usr, tot, class_assignments
+        usr += num
+        tot += class_assignments[kind]
+        return usr / tot
+    return cal
 
 def num_trees(n):
     """How many full binary trees have exactly n leaves? E.g.,
@@ -157,9 +168,9 @@ def num_trees(n):
     429
 
     """
-    if ____________________:
-        return _______________
-    return _______________
+    if n <= 2:
+        return 1
+    return sum([num_trees(i) * num_trees(n - i) for i in range(1, n)])
 
 
 def make_advanced_counter_maker():
@@ -191,13 +202,23 @@ def make_advanced_counter_maker():
     >>> tom_counter('global-count')
     1
     """
-    ________________
-    def ____________(__________):
-        ________________
-        def ____________(__________):
-            ________________
+    gcnt = 0
+    def work1():
+        cnt = 0
+        def work2(cons):
+            nonlocal cnt, gcnt
             "*** YOUR CODE HERE ***"
             # as many lines as you want
-        ________________
-    ________________
+            if cons == 'count':
+                cnt += 1
+                return cnt
+            if cons == 'global-count':
+                gcnt += 1
+                return gcnt
+            if cons == 'reset':
+                cnt = 0
+            if cons == 'global-reset':
+                gcnt = 0
+        return work2
+    return work1
 
