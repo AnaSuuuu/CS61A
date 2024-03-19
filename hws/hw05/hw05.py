@@ -19,7 +19,18 @@ def make_bank(balance):
     120
     """
     def bank(message, amount):
-        "*** YOUR CODE HERE ***"
+        nonlocal balance
+        if message == 'deposit':
+            balance += amount
+            return balance
+        elif message == 'withdraw':
+            if balance < amount:
+                return 'Insufficient funds'
+            else:
+                balance -= amount
+                return balance
+        else:
+            return 'Invalid message'
     return bank
 
 
@@ -51,8 +62,24 @@ def make_withdraw(balance, password):
     >>> type(w(10, 'l33t')) == str
     True
     """
-    "*** YOUR CODE HERE ***"
-
+    cnt = 0
+    lt = []
+    def decode(amount, string):
+        nonlocal cnt
+        nonlocal lt
+        nonlocal balance
+        if cnt == 3:
+            return f"Too many incorrect attempts. Attempts: {lt}"
+        if string != password:
+            cnt += 1
+            lt += [string]
+            return 'Incorrect password'
+        elif amount > balance:
+            return 'Insufficient funds'
+        else:
+            balance -= amount
+            return balance
+    return decode
 
 def repeated(t, k):
     """Return the first value in iterator T that appears K times in a row. Iterate through the items such that
@@ -75,7 +102,17 @@ def repeated(t, k):
     2
     """
     assert k > 1
-    "*** YOUR CODE HERE ***"
+    pre = next(t)
+    cnt = 1
+    while True:
+        num = next(t)
+        if num == pre:
+            cnt += 1
+        else:
+            cnt = 1
+            pre = num
+        if cnt == k:
+            return pre
 
 
 def merge(incr_a, incr_b):
@@ -97,8 +134,29 @@ def merge(incr_a, incr_b):
     """
     iter_a, iter_b = iter(incr_a), iter(incr_b)
     next_a, next_b = next(iter_a, None), next(iter_b, None)
-    "*** YOUR CODE HERE ***"
+    def work():
+        nonlocal iter_a, iter_b
+        nonlocal next_a, next_b
+        while next_a != None or next_b != None:
+            if next_a == None:
+                yield next_b
+                next_b = next(iter_b, None)
+            elif next_b == None:
+                yield next_a
+                next_a = next(iter_a, None)
+            else:
+                if next_a < next_b:
+                    yield next_a
+                    next_a = next(iter_a, None)
+                elif next_a > next_b:
+                    yield next_b
+                    next_b = next(iter_b, None)
+                else:
+                    yield next_a
+                    next_b = next(iter_b, None)
+                    next_a = next(iter_a, None)
 
+    return work()
 
 def make_joint(withdraw, old_pass, new_pass):
     """Return a password-protected withdraw function that has joint access to
