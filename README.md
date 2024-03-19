@@ -13,21 +13,27 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] Lab 03: Recursion, Tree Recursion
 - [x] Lab 04: Python Lists, Data Abstraction
 - [x] Lab 05: Python Lists, Trees
+- [x] Lab 06: Nonlocal, Mutability
+- [x] Lab 07: Midterm Review 
 
 ### Dics
 - [x] Disc 00: Getting Started
 - [x] Disc 01: Environment Diagrams, Control, Self Reference
 - [x] Disc 02: Higher-Order Functions
 - [x] Disc 04: Recursion, Tree Recursion, Python Lists
+- [x] Disc 05: Python Lists, Trees, Mutability
+- [x] Disc 06: Nonlocal, Midterm Review
 
 ### HW
 - [x] HW 01: Variables & Functions, Control
 - [x] HW 02: Higher-Order Functions
 - [x] HW 03: Higher-Order Functions, Self Reference, Recursion, Tree Recursion
 - [x] HW 04: Data Abstraction, Trees
+- [x] HW 05: Nonlocal, Iterators & Generators
 
 ### Project
 - [x] Hog
 
+### Exams
 
 
