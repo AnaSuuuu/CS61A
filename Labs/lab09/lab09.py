@@ -8,6 +8,9 @@ def convert_link(link):
     []
     """
     "*** YOUR CODE HERE ***"
+    if link is Link.empty:
+        return []
+    return [link.first] + convert_link(link.rest)
 
 
 def every_other(s):
@@ -28,8 +31,37 @@ def every_other(s):
     Link(4)
     """
     "*** YOUR CODE HERE ***"
+    """
+    cnt = 0
+    def work(s):
+        nonlocal cnt
+        cnt ^= 1
+        if s == Link.empty:
+            return
+        if cnt == 1:
+            if s.rest != Link.empty:
+                s.rest = Link(work(s.rest))
+        else:
+            s.first = work(s.rest)
+            s.rest = ()
+    work(s)
+    """
+    ch = convert_link(s)
+    odd = lambda x: x % 2 == 0
+    a = [ch[i] for i in range(len(ch)) if odd(i)]
+    n = len(ch) // 2 + (len(ch) % 2 == 1)
+    # print(n)
+    ans = Link(a[n - 1])
+    n -= 1
+    while(n >= 1):
+        ans = Link(a[n - 1], ans)
+        n -= 1
+    s.first = ans.first
+    s.rest = ans.rest
+    # print(len(ch))
+    # print(a)
 
-
+    
 def label_squarer(t):
     """Mutates a Tree t by squaring all its elements.
 
@@ -39,7 +71,8 @@ def label_squarer(t):
     Tree(1, [Tree(9, [Tree(25)]), Tree(49)])
     """
     "*** YOUR CODE HERE ***"
-
+    square = lambda x: x * x
+    return t.map(square)
 
 def cumulative_mul(t):
     """Mutates t so that each node's label becomes the product of all labels in
@@ -51,6 +84,12 @@ def cumulative_mul(t):
     Tree(105, [Tree(15, [Tree(5)]), Tree(7)])
     """
     "*** YOUR CODE HERE ***"
+    num = t.label
+    for b in t.branches:
+        cumulative_mul(b)
+        num *= b.label
+    t.label = num
+    return 
 
 
 def has_cycle(link):
@@ -68,6 +107,15 @@ def has_cycle(link):
     False
     """
     "*** YOUR CODE HERE ***"
+    tmp = link
+    vis = set()
+    while tmp != Link.empty:
+        if tmp in vis:
+            return True
+        vis.add(tmp)
+        tmp = tmp.rest
+    return False
+
 
 def has_cycle_constant(link):
     """Return whether link contains a cycle.
@@ -81,6 +129,13 @@ def has_cycle_constant(link):
     False
     """
     "*** YOUR CODE HERE ***"
+    tmp1, tmp2 = link, link.rest
+    while tmp1 != Link.empty and tmp2 != Link.empty:
+        if tmp1 == tmp2:
+            return True
+        tmp1 = tmp1.rest
+        tmp2 = tmp2.rest.rest
+    return False
 
 
 def reverse_other(t):
@@ -97,6 +152,24 @@ def reverse_other(t):
     Tree(1, [Tree(8, [Tree(3, [Tree(5), Tree(4)]), Tree(6, [Tree(7)])]), Tree(2)])
     """
     "*** YOUR CODE HERE ***"
+    """
+    rev = []
+    n = len(t.branches)
+    for b in t.branches:
+        c = b
+        reverse_other(c)
+        rev = [c] + rev
+    t.branches = rev
+    """
+    lst = []
+    for b in t.branches:
+       lst = lst + [b.label] 
+    n = len(t.branches) 
+    for i in range(n):
+        t.branches[i].label = lst[n - i - 1]
+    for b in t.branches:
+        for bb in b.branches:
+            reverse_other(bb)
 
 
 class Link:
