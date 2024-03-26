@@ -15,6 +15,8 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] Lab 05: Python Lists, Trees
 - [x] Lab 06: Nonlocal, Mutability
 - [x] Lab 07: Midterm Review 
+- [x] Lab 08: Object-Oriented Programming
+- [x] Lab 09: Linked Lists, Mutable Trees
 
 ### Dics
 - [x] Disc 00: Getting Started
@@ -23,6 +25,7 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] Disc 04: Recursion, Tree Recursion, Python Lists
 - [x] Disc 05: Python Lists, Trees, Mutability
 - [x] Disc 06: Nonlocal, Midterm Review
+- [x] Disc 08: Iterators & Generators, Object-Oriented Programming
 
 ### HW
 - [x] HW 01: Variables & Functions, Control
