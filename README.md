@@ -18,6 +18,7 @@ Chinese version of the textbook: https://composingprograms.netlify.app
 - [x] Lab 07: Midterm Review 
 - [x] Lab 08: Object-Oriented Programming
 - [x] Lab 09: Linked Lists, Mutable Trees
+- [x] Lab 10: Scheme, Scheme Lists
 
 ### Dics
 - [x] Disc 00: Getting Started
@@ -28,6 +29,7 @@ Chinese version of the textbook: https://composingprograms.netlify.app
 - [x] Disc 06: Nonlocal, Midterm Review
 - [x] Disc 08: Iterators & Generators, Object-Oriented Programming
 - [x] Disc 09: Linked Lists, Trees
+- [x] Disc 10: Scheme, Scheme Lists
 
 ### HW
 - [x] HW 01: Variables & Functions, Control
