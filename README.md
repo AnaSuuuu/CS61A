@@ -3,6 +3,7 @@
 UCB CS61A: Structure and Interpretation of Computer Programs
 
 Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
+Chinese version of the textbook: https://composingprograms.netlify.app
 
 ## Learning Log
 
@@ -26,6 +27,7 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] Disc 05: Python Lists, Trees, Mutability
 - [x] Disc 06: Nonlocal, Midterm Review
 - [x] Disc 08: Iterators & Generators, Object-Oriented Programming
+- [x] Disc 09: Linked Lists, Trees
 
 ### HW
 - [x] HW 01: Variables & Functions, Control
@@ -33,6 +35,7 @@ Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
 - [x] HW 03: Higher-Order Functions, Self Reference, Recursion, Tree Recursion
 - [x] HW 04: Data Abstraction, Trees
 - [x] HW 05: Nonlocal, Iterators & Generators
+- [x] HW 06: Object-Oriented Programming, Linked Lists, Trees
 
 ### Project
 - [x] Hog
