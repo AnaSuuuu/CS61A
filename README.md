@@ -3,6 +3,7 @@
 UCB CS61A: Structure and Interpretation of Computer Programs
 
 Website: https://inst.eecs.berkeley.edu/~cs61a/su20/
+
 Chinese version of the textbook: https://composingprograms.netlify.app
 
 ## Learning Log
@@ -19,6 +20,7 @@ Chinese version of the textbook: https://composingprograms.netlify.app
 - [x] Lab 08: Object-Oriented Programming
 - [x] Lab 09: Linked Lists, Mutable Trees
 - [x] Lab 10: Scheme, Scheme Lists
+- [x] Lab 11: Interpreters
 
 ### Dics
 - [x] Disc 00: Getting Started
@@ -30,6 +32,10 @@ Chinese version of the textbook: https://composingprograms.netlify.app
 - [x] Disc 08: Iterators & Generators, Object-Oriented Programming
 - [x] Disc 09: Linked Lists, Trees
 - [x] Disc 10: Scheme, Scheme Lists
+- [x] Disc 11: Tail Recursion, Macros
+- [x] Disc 12: Streams
+- [x] Disc 13: SQL
+- [x] Disc 14: Final Review
 
 ### HW
 - [x] HW 01: Variables & Functions, Control

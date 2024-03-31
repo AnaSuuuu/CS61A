@@ -107,6 +107,10 @@ class Name(Expr):
         None
         """
         "*** YOUR CODE HERE ***"
+        if self.var_name in env.keys():
+            return env[self.var_name]
+        else:
+            return None
 
     def __str__(self):
         return self.var_name
@@ -172,7 +176,22 @@ class CallExpr(Expr):
         >>> read('add(mul(3, 4), b)').eval(new_env)
         Number(14)
         """
-        "*** YOUR CODE HERE ***"
+        """
+        n = len(self.operands)
+        if n == 1:
+            return self.operator.eval(env)(self.operands[0])
+        else:
+            ans = self.operator.eval(env)(self.operands[0], self.operands[1])
+            for i in range(2, n):
+                ans = self.operator.eval(env)(self.operands[i], ans)
+            return ans
+        """
+        # for i in self.operands:
+        #    yield i.eval(env)
+        if self.operator.eval(env) == None:
+            raise TypeError("The fxxking function {} has not been defined yet".format(self.operator))
+        kdl = [i.eval(env) for i in self.operands]
+        return self.operator.eval(env).apply(kdl)
 
     def __str__(self):
         function = str(self.operator)
@@ -281,7 +300,10 @@ class LambdaFunction(Value):
         if len(self.parameters) != len(arguments):
             raise TypeError("Oof! Cannot apply number {} to arguments {}".format(
                 comma_separated(self.parameters), comma_separated(arguments)))
-        "*** YOUR CODE HERE ***"
+        bg = self.parent.copy()
+        for a, b in zip(self.parameters, arguments):
+            bg[a] = b
+        return self.body.eval(bg)
 
     def __str__(self):
         definition = LambdaExpr(self.parameters, self.body)
