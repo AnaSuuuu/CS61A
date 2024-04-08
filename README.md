@@ -21,6 +21,8 @@ Chinese version of the textbook: https://composingprograms.netlify.app
 - [x] Lab 09: Linked Lists, Mutable Trees
 - [x] Lab 10: Scheme, Scheme Lists
 - [x] Lab 11: Interpreters
+- [x] Lab 12: Macros, Streams
+- [x] Lab 13: SQL
 
 ### Dics
 - [x] Disc 00: Getting Started
